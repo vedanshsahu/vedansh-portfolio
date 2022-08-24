@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{#Title#}
+{% block title %}
+    {% for person in persons %}
+        {{ person.first_name }} {{ person.last_name }}
+    {% endfor %}
+{% endblock %}
+
+{#Navigation Bar#}
+{% block link1 %}About{% endblock %}
+{% block link2 %}Resume{% endblock %}
+{% block link3 %}Projects{% endblock %}
+{% block link4 %}Testimonials{% endblock %}
+{% block link5 %}<span>Say Hello</span>{% endblock %}
+
+{#Hero Banner#}
+{% block first_name %}
+    {% for person in persons %}
+        {{ person.first_name }}
+    {% endfor %}
+{% endblock %}
+{% block hero_text %}
+    {% for person in persons %}
+        {{ person.hero_text|safe }}
+    {% endfor %}
+{% endblock %}
+
+{#Social Media Icons#}
+{% block facebook %}{% for person in persons %}{{ person.facebook }}{% endfor %}{% endblock %}
+{% block linkedin %}{% for person in persons %}{{ person.linkedin }}{% endfor %}{% endblock %}
+{% block instagram %}{% for person in persons %}{{ person.instagram }}{% endfor %}{% endblock %}
+{% block youtube %}{% for person in persons %}{{ person.youtube }}{% endfor %}{% endblock %}
+{% block github %}{% for person in persons %}{{ person.git }}{% endfor %}{% endblock %}
+{% block behance %}{% for person in persons %}{{ person.behance }}{% endfor %}{% endblock %}
+{% block f-facebook %}{% for person in persons %}{{ person.facebook }}{% endfor %}{% endblock %}
+{% block f-linkedin %}{% for person in persons %}{{ person.linkedin }}{% endfor %}{% endblock %}
+{% block f-instagram %}{% for person in persons %}{{ person.instagram }}{% endfor %}{% endblock %}
+{% block f-youtube %}{% for person in persons %}{{ person.youtube }}{% endfor %}{% endblock %}
+{% block f-github %}{% for person in persons %}{{ person.git }}{% endfor %}{% endblock %}
+{% block f-behance %}{% for person in persons %}{{ person.behance }}{% endfor %}{% endblock %}
+
+{#About Us#}
+{% block about_us %}
+    {% for person in persons %}
+        {{ person.about_me|safe }}
+    {% endfor %}
+{% endblock %}
+
+{#CV Download#}
+{% block cv_download %}
+    {% for person in persons %}
+        {{ person.resume }}
+    {% endfor %}
+{% endblock %}
+
+{#Experience section#}
+{% block experience_section %}
+    {% for experience in experiences %}
+        <div class="resume-block">
+            <div class="resume-block__header">
+                <h4 class="h3">{{ experience.company }}</h4>
+                <p class="resume-block__header-meta">
+                    <span>{{ experience.position }}</span>
+                    <span class="resume-block__header-date">
+                        {{ experience.date_from }} - {{ experience.date_to }}
+                    </span>
+                </p>
+            </div>
+            <p>
+            {{ experience.description|safe }}
+            </p>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{#Education section#}
+{% block education_section %}
+    {% for education in educations %}
+        <div class="resume-block">
+            <div class="resume-block__header">
+                <h4 class="h3">{{ education.institution }}</h4>
+                <p class="resume-block__header-meta">
+                    <span>{{ education.degree }}</span>
+                    <span class="resume-block__header-date">
+                        {{ education.date_from }} - {{ education.date_to }}
+                    </span>
+                </p>
+            </div>
+{#            <p>#}
+{#            {{ education.description|safe }}#}
+{#            </p>#}
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{#Skill section#}
+{% block skill_d %}
+    {% for skilld in skillds %}
+        {{ skilld.description|safe }}
+    {% endfor %}
+{% endblock %}
+
+{% block skill_item %}
+    {% for skill in skills %}
+        <li>
+            <div class="progress percent{{ skill.progress }}"></div>
+            <strong>{{ skill.technology }}</strong>
+        </li>
+    {% endfor %}
+{% endblock %}
